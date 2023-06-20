@@ -14,6 +14,7 @@ import { NewletterModule } from './newletter/newletter.module';
 import { ContactModule } from './contact/contact.module';
 import { SoutenirModule } from './soutenir/soutenir.module';
 import { MailModule } from './mail/mail.module';
+import { ImageStorageModule } from './image-storage/image-storage.module';
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -41,7 +42,15 @@ const isProduction = process.env.NODE_ENV === "production";
     UserModule, 
     AuthModule, 
     EventsModule, 
-    TestmonialModule, PartnerModule, ActivityModule, AnimateurModule, NewletterModule, ContactModule, SoutenirModule, MailModule,
+    TestmonialModule, 
+    PartnerModule, 
+    ActivityModule, 
+    AnimateurModule, 
+    NewletterModule, 
+    ContactModule, 
+    SoutenirModule, 
+    MailModule, 
+    ImageStorageModule,
     
   ],
 })

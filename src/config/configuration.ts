@@ -7,6 +7,11 @@ export default () => ({
       url: isProduction ? process.env.DATABASE_URL
         : `postgresql://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASS}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DATABASE}`
     },
+    bucket: {
+      spaces: process.env.SPACES,
+      accesskeyid: process.env.ACCESSKEYID,
+      secretacceskey: process.env.SECRETACCESSKEY
+    },
     mail: {
       from: {
         name: process.env.MAIL_FROM_NAME,
