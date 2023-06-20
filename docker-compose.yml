@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  monkeypox-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: monkeypox-api
+    image: monkeypox-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080" 
+    networks:
+      - app-network
+    volumes:
+      - ./monkeypox-api/:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    env_file:
+      - .env
+      
+  db:
+    restart: always
+    image: postgres:latest
+    container_name: monkeypox-db
+    command: ["-c", "shared_buffers=256MB", "-c", "max_connections=500"]
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
+    environment:
+      - POSTGRES_PASSWORD=kataku
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    expose:
+      - 5432
+    networks:
+      - app-network
+   
+  
+  adminer:
+    image: adminer
+    container_name: monkeypox-adminer
+    restart: always
+    ports:
+      - 8082:8080
+    networks:
+      - app-network
+
+volumes:
+  postgres:
+    driver: local 
+
+    
+networks:
+  app-network:
+    driver: bridge
