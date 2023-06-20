@@ -22,6 +22,9 @@ import configuration from './config/configuration';
         // username: configService.get<string>('database.user'),
         // password: configService.get<string>('database.password'),
         // database: configService.get<string>('database.db'), 
+        ssl: {
+          rejectUnauthorized: false,
+        },
         autoLoadEntities: true,
         synchronize: true,
       }), 
