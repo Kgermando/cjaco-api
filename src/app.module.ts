@@ -17,11 +17,6 @@ import configuration from './config/configuration';
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
         url: configService.get<string>('database.url'),
-        // host: configService.get<string>('database.host'),
-        // port: configService.get<number>('database.port'),
-        // username: configService.get<string>('database.user'),
-        // password: configService.get<string>('database.password'),
-        // database: configService.get<string>('database.db'), 
         ssl: {
           rejectUnauthorized: false,
         },
