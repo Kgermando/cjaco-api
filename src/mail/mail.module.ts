@@ -1,9 +1,16 @@
-import { Module } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { MailService } from './mail.service';
-import { MailController } from './mail.controller';
 
 @Module({
-  providers: [MailService],
-  controllers: [MailController]
+  imports: [ConfigModule],
 })
-export class MailModule {}
+export class MailModule {
+  static register(): DynamicModule {
+    return {
+      module: MailModule,
+      providers: [MailService],
+      exports: [MailService],
+    };
+  }
+}
