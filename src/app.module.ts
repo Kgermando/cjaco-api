@@ -5,6 +5,15 @@ import configuration from './config/configuration';
 import { CommonModule } from './common/common.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { EventsModule } from './events/events.module';
+import { TestmonialModule } from './testmonial/testmonial.module';
+import { PartnerModule } from './partner/partner.module';
+import { ActivityModule } from './activity/activity.module';
+import { AnimateurModule } from './animateur/animateur.module';
+import { NewletterModule } from './newletter/newletter.module';
+import { ContactModule } from './contact/contact.module';
+import { SoutenirModule } from './soutenir/soutenir.module';
+import { MailModule } from './mail/mail.module';
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -30,7 +39,9 @@ const isProduction = process.env.NODE_ENV === "production";
 
     CommonModule,
     UserModule, 
-    AuthModule,
+    AuthModule, 
+    EventsModule, 
+    TestmonialModule, PartnerModule, ActivityModule, AnimateurModule, NewletterModule, ContactModule, SoutenirModule, MailModule,
     
   ],
 })
