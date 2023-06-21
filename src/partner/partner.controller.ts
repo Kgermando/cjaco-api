@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { PartnerService } from './partner.service';
 import { Partner } from './models/partner.entity';
 import { PartnerUpdateDto } from './models/partner-update.dto';
@@ -9,8 +9,10 @@ export class PartnerController {
     constructor(private partnerService: PartnerService) {}
 
     @Get()
-    async all() {
-      return this.partnerService.all();
+    async all(
+      @Query('page') page: number = 1
+    ) {
+      return await this.partnerService.paginate(page);
     }
   
     @Post()

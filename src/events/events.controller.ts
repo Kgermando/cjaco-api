@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { EventsService } from './events.service';
 import { Events } from './models/events.entity';
 import { EventsCreateDto } from './models/events-create.dto';
@@ -10,8 +10,10 @@ export class EventsController {
   constructor(private eventsService: EventsService) {}
 
   @Get()
-  async all() {
-    return this.eventsService.all();
+  async all(
+    @Query('page') page: number = 1
+  ) {
+    return await this.eventsService.paginate(page);
   }
 
   @Post()

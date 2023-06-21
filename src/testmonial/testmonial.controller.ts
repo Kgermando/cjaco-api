@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Delete, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Post, Delete, Get, Param, Put, Query } from '@nestjs/common';
 import { TestmonialService } from './testmonial.service';
 import { Testmonial } from './models/testmonial.entity';
 import { TestmonialCreateDto } from './models/testmonial-create.dto';
@@ -9,8 +9,10 @@ export class TestmonialController {
     constructor(private testmonialService: TestmonialService) {}
 
     @Get()
-    async all() {
-      return this.testmonialService.all();
+    async all(
+      @Query('page') page: number = 1
+    ) {
+      return await this.testmonialService.paginate(page);
     }
   
     @Post()

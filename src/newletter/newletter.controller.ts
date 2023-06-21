@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { NewletterService } from './newletter.service';
 import { NewsLetter } from './models/newsletter.entity';
 import { NewsLetterCreateDto } from './models/newsletter-create.dto';
@@ -9,8 +9,10 @@ export class NewletterController {
     constructor(private newletterService: NewletterService) {}
 
     @Get()
-    async all() {
-      return this.newletterService.all();
+    async all(
+      @Query('page') page: number = 1
+    ) {
+      return await this.newletterService.paginate(page);
     }
   
     @Post()

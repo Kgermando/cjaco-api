@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ActivityService } from './activity.service';
 import { Activity } from './models/activity.entity';
 import { ActivityCreateDto } from './models/activity-create.dto';
@@ -9,8 +9,10 @@ export class ActivityController {
     constructor(private activityService: ActivityService) {}
 
     @Get()
-    async all() {
-      return this.activityService.all();
+    async all(
+      @Query('page') page: number = 1
+    ) {
+      return await this.activityService.paginate(page);
     }
   
     @Post()

@@ -11,5 +11,17 @@ export class ContactService extends AbstractService {
     ) {
         super(contactRepository); 
     }
+
+    async paginate(page: number = 1): Promise<any> {
+        const {data, meta} = await super.paginate(page);
+        
+        return {
+            data: data.map(user => {
+                const {password, ...data} = user;
+                return data;
+            }),
+            meta
+        }
+    }
 }
  

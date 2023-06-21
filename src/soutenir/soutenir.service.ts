@@ -11,4 +11,16 @@ export class SoutenirService extends AbstractService {
     ) {
         super(soutenirRepository); 
     }
+
+    async paginate(page: number = 1): Promise<any> {
+        const {data, meta} = await super.paginate(page);
+        
+        return {
+            data: data.map(user => {
+                const {password, ...data} = user;
+                return data;
+            }),
+            meta
+        }
+    }
 }

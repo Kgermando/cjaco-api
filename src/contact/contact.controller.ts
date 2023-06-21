@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ContactService } from './contact.service';
 import { Contact } from './models/contact.entity';
 import { ContactCreateDto } from './models/contact-create.dto';
@@ -9,8 +9,10 @@ export class ContactController {
     constructor(private contactService: ContactService) {}
 
     @Get()
-    async all() {
-      return this.contactService.all();
+    async all(
+      @Query('page') page: number = 1
+    ) {
+      return await this.contactService.paginate(page);
     }
   
     @Post()

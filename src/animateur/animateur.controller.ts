@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { AnimateurService } from './animateur.service';
 import { Animateur } from './models/animateur.entity';
 import { AnimateurCreateDto } from './models/aniateur-create.dto';
@@ -10,10 +10,13 @@ export class AnimateurController {
   constructor(private animateurService: AnimateurService) {}
 
   @Get()
-  async all() {
-    return this.animateurService.all();
+  async all(
+    @Query('page') page: number = 1
+  ) {
+    return await this.animateurService.paginate(page);
   }
 
+  
   @Post()
   async create(@Body() body: AnimateurCreateDto): Promise<Animateur> {
     return this.animateurService.create(body);
