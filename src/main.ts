@@ -3,12 +3,16 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
+  const isProduction = process.env.NODE_ENV === "production";
+
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
   // app.use(cookieParser());
   app.enableCors({
-    origin: 'https://cjaco.org', 
+    origin: isProduction 
+      ? 'https://cjaco.org'
+      : 'http://localhost:4200', 
     credentials: true
   });
   const PORT = process.env.PORT || 3000;
