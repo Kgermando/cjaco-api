@@ -14,7 +14,7 @@ import { NewletterModule } from './newletter/newletter.module';
 import { ContactModule } from './contact/contact.module';
 import { SoutenirModule } from './soutenir/soutenir.module';
 import { MailModule } from './mail/mail.module';
-import { ImageStorageModule } from './image-storage/image-storage.module';
+import { ImageModule } from './image/image.module';
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -50,7 +50,7 @@ const isProduction = process.env.NODE_ENV === "production";
     ContactModule, 
     SoutenirModule, 
     MailModule, 
-    ImageStorageModule,
+    ImageModule,
     
   ],
 })

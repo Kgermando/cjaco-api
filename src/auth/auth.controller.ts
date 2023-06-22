@@ -32,14 +32,14 @@ export class AuthController {
 
     @Post('login')
     async login(
-        @Body('matricule') matricule: string,
+        @Body('telephone') telephone: string,
         @Body('password') password: string, 
     ) {
-        const user = await this.userService.findOne({where: {matricule}}); 
+        const user = await this.userService.findOne({where: {telephone}});
 
         if(!user) {
             throw new NotFoundException('Utilisateur non trouvé!');
-        } 
+        }
 
         if(!await bcrypt.compare(password, user.password)) {
             throw new BadRequestException('Invalid credentiels.');
@@ -56,12 +56,12 @@ export class AuthController {
 
 
     @Get(':id')
-    async user(@Param('id') id: number) { 
+    async user(@Param('id') id: number) {
         return this.userService.findOne({where: {id}});
-    } 
+    }
  
     @Post('logout')
-    async logout() {  
+    async logout() {
         return {
             message: 'Success!'
         }
@@ -74,12 +74,10 @@ export class AuthController {
       @Param('id') id: number,
       @Body() body: UserUpdateDto ) { 
   
-      await this.userService.update(id, body); 
-      
+      await this.userService.update(id, body);
       return this.userService.findOne({where: {id}});
     }
   
-
 
     @Put('/password/:id')  
     async updatePassword(
@@ -100,5 +98,4 @@ export class AuthController {
       return this.userService.findOne({where: {id}});
     }
   
- 
 }
