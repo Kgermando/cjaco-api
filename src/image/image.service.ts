@@ -22,7 +22,7 @@ export class ImageService {
     private bucket = this.config.get<string>('IMAGE_S3_BUCKET');
     private region = this.config.get<string>('IMAGE_S3_REGION');
     private basePath = process.cwd();
-    private publicBucketUrl = `https://${this.bucket}.${this.region}.amazonaws.com`;
+    private publicBucketUrl = `https://${this.bucket}.s3.${this.region}.amazonaws.com`;
       
 
     async handleImage(file: Express.Multer.File) {
