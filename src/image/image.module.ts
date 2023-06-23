@@ -14,8 +14,7 @@ import { ConfigService } from '@nestjs/config';
     AwsSdkModule.registerAsync({
       clientType: S3Client,
       inject: [ConfigService],
-      useFactory: (config: ConfigService): S3Client =>
-        new S3Client({
+      useFactory: (config: ConfigService): S3Client => new S3Client({
           region: config.get<string>('bucket.region'),
           credentials: {
             accessKeyId: config.get<string>('bucket.accesskeyid'), 
