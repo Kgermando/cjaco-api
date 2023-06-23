@@ -40,7 +40,7 @@ export class ImageService {
               ACL: 'public-read',
               Bucket: this.bucket,
               Key: bucketFileName,
-              Body: await readFile(localPath), 
+              Body: await readFile(localPath),
               Metadata: {
                 'Content-Type': file.mimetype,
               },
