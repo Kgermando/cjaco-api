@@ -37,7 +37,7 @@ export class ImageController {
     // }
 
     @Post('upload')
-    @UseInterceptors(FileInterceptor('application'))
+    @UseInterceptors(FileInterceptor('image'))
     uploadFile(@UploadedFile() file) {
       var url_path = this.imageService.handleImage(file);
       return url_path;
