@@ -15,7 +15,7 @@ import { ConfigService } from '@nestjs/config';
       clientType: S3Client,
       inject: [ConfigService],
       useFactory: (config: ConfigService): S3Client => new S3Client({
-        forcePathStyle: true,
+        forcePathStyle: false,
         region: config.get<string>('bucket.region'),
         credentials: {
           accessKeyId: config.get<string>('bucket.accesskeyid'), 
