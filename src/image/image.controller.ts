@@ -25,26 +25,18 @@ export class ImageController {
     isProd = this.config.get<string>('NODE_ENV') === 'production';
 
     
-    // @Post('upload') 
-    // @UseInterceptors(FilesInterceptor('image'))
-    // async uploadFiles(@UploadedFiles() files: Express.Multer.File[] = []) {
-    //   if (!this.isProd) {
-    //     this.#logger.debug(
-    //       'Got these files: ' + JSON.stringify(files, undefined, 2),
-    //     );
-    //   }
+    @Post('upload') 
+    @UseInterceptors(FilesInterceptor('image'))
+    async uploadFiles(@UploadedFiles() files: Express.Multer.File[] = []) {
+      if (!this.isProd) {
+        this.#logger.debug(
+          'Got these files: ' + JSON.stringify(files, undefined, 2),
+        );
+      }
 
-    //   var url = Promise.all(files.map((f) => this.imageService.handleImage(f)));
-    //   console.log(`url ${url}`);
-    //   return url;
-    // }
-
-    @Post('upload')
-    @UseInterceptors(FileInterceptor('application'))
-    uploadFile(@UploadedFile() file) {
-        return {
-          url: this.imageService.handleImage(file)
-        }
-    } 
+      var url = Promise.all(files.map((f) => this.imageService.handleImage(f)));
+      console.log(`url ${url}`);
+      return url;
+    }
     
 }
