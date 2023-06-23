@@ -29,7 +29,6 @@ export class ImageController {
           'Got these files: ' + JSON.stringify(file, undefined, 2),
         );
       }
-  
       return this.imageService.handleImage(file);
-    }   
+    }
 }
