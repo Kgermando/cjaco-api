@@ -3,6 +3,7 @@ import {
     Logger,
     Post,
     UploadedFiles,
+    UseGuards,
     UseInterceptors,
   } from '@nestjs/common';
   import { ImageService } from './image.service';
@@ -22,12 +23,13 @@ export class ImageController {
     
     @Post('upload') 
     @UseInterceptors(FilesInterceptor('image'))
-    async uploadFile(@UploadedFiles() file: Express.Multer.File) {
+    async uploadFile(@UploadedFiles() files: Express.Multer.File[] = []) {
       if (!this.isProd) {
         this.#logger.debug(
-          'Got these files: ' + JSON.stringify(file, undefined, 2),
+          'Got these files: ' + JSON.stringify(files, undefined, 2),
         );
       }
-      return this.imageService.handleImage(file);
-    }
+  
+      return Promise.all(files.map((f) => this.imageService.handleImage(f)));
+    }   
 }
