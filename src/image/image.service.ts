@@ -62,7 +62,7 @@ export class ImageService {
           return this.publicBucketUrl + '/' + bucketFileName;
         } catch (err: any) {
           this.#logger.error('Error when uploading file to S3: ' + err.stack);
-          throw new InternalServerErrorException('Could not send file to S3');
+          throw new InternalServerErrorException('Could not send file to S3' + err.stack);
         }
       }     
 }
