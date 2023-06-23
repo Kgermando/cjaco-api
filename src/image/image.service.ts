@@ -41,9 +41,9 @@ export class ImageService {
               Bucket: this.bucket,
               Key: bucketFileName,
               Body: await readFile(localPath),
-              // Metadata: {
-              //   'Content-Type': file.mimetype,
-              // },
+              Metadata: {
+                'Content-Type': file.mimetype,
+              },
             }),
           );
     
