@@ -24,11 +24,13 @@ export class ImageService {
     private basePath = process.cwd();
     private publicBucketUrl = `https://${this.bucket}.${this.region}.amazonaws.com`;
       
-    
+
     async handleImage(file: Express.Multer.File) {
         const bucketFileName = file.filename + extname(file.originalname);
         try {
           const localPath = join(this.basePath, file.path);
+
+          console.log(this.publicBucketUrl);
     
           if (!this.#isProd) {
             this.#logger.debug('Starting upload for file: ' + file.originalname);
