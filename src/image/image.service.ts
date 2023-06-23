@@ -22,16 +22,12 @@ export class ImageService {
     private bucket = this.config.get<string>('IMAGE_S3_BUCKET');
     private region = this.config.get<string>('IMAGE_S3_REGION');
     private basePath = process.cwd();
-    // private publicBucketUrl = `https://${this.bucket}.${this.region}.amazonaws.com`;
-
-    private publicBucketUrl  = 'https://cjaco-spaces.fra1.digitaloceanspaces.com';
+    private publicBucketUrl = `https://${this.bucket}.${this.region}.amazonaws.com`; 
 
     async handleImage(file: Express.Multer.File) {
         const bucketFileName = file.filename + extname(file.originalname);
         try {
           const localPath = join(this.basePath, file.path);
-
-          console.log(this.publicBucketUrl);
     
           if (!this.#isProd) {
             this.#logger.debug('Starting upload for file: ' + file.originalname);
@@ -59,7 +55,7 @@ export class ImageService {
           if (!this.#isProd) {
             this.#logger.debug('Finished upload of image ' + bucketFileName);
           }
-    
+          
           return this.publicBucketUrl + '/' + bucketFileName;
         } catch (err: any) {
           this.#logger.error('Error when uploading file to S3: ' + err.stack);

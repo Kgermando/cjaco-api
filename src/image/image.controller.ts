@@ -29,7 +29,10 @@ export class ImageController {
           'Got these files: ' + JSON.stringify(files, undefined, 2),
         );
       }
-  
-      return Promise.all(files.map((f) => this.imageService.handleImage(f)));
-    }   
+
+      var url = Promise.all(files.map((f) => this.imageService.handleImage(f)));
+      console.log(url);
+      return url;
+    }
+    
 }
