@@ -15,12 +15,13 @@ import { ConfigService } from '@nestjs/config';
       clientType: S3Client,
       inject: [ConfigService],
       useFactory: (config: ConfigService): S3Client => new S3Client({
-          region: config.get<string>('bucket.region'),
-          credentials: {
-            accessKeyId: config.get<string>('bucket.accesskeyid'), 
-            secretAccessKey: config.get<string>('bucket.secretacceskey'),
-          },
-        }),
+        forcePathStyle: true,
+        region: config.get<string>('bucket.region'),
+        credentials: {
+          accessKeyId: config.get<string>('bucket.accesskeyid'), 
+          secretAccessKey: config.get<string>('bucket.secretacceskey'),
+        },
+      }),
     }),
   ],
   providers: [ImageService],
