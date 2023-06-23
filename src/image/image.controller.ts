@@ -40,9 +40,7 @@ export class ImageController {
     @UseInterceptors(FileInterceptor('image'))
     uploadFile(@UploadedFile() file) {
       var url_path = this.imageService.handleImage(file);
-      return {
-        url : url_path
-      }
+      return url_path;
     }
     
 }

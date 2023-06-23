@@ -57,7 +57,10 @@ export class ImageService {
           }
           var urlPath = this.publicBucketUrl + '/' + bucketFileName;
           console.log(`urlPath ${urlPath}`);
-          return urlPath;
+          return {
+            url : urlPath,
+            message: "Successfully uploaded to S3"
+          };
         } catch (err: any) {
           this.#logger.error('Error when uploading file to S3: ' + err.stack);
           throw new InternalServerErrorException('Could not send file to S3 ' + err.stack);
