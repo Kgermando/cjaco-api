@@ -31,7 +31,7 @@ export class ImageController {
       }
 
       var url = Promise.all(files.map((f) => this.imageService.handleImage(f)));
-      console.log(url);
+      console.log(`urlPath ${url}`);
       return url;
     }
     
