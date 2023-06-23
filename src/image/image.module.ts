@@ -18,6 +18,7 @@ import { ConfigService } from '@nestjs/config';
         endpoint: "https://fra1.digitaloceanspaces.com",
         forcePathStyle: false,
         region: config.get<string>('bucket.region'),
+        
         credentials: {
           accessKeyId: config.get<string>('bucket.accesskeyid'), 
           secretAccessKey: config.get<string>('bucket.secretacceskey'),

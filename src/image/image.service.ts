@@ -37,6 +37,7 @@ export class ImageService {
     
           await this.s3.send(
             new PutObjectCommand({
+              ACL: 'public-read',
               Bucket: this.bucket,
               Key: bucketFileName,
               Body: await readFile(localPath),
