@@ -3,7 +3,6 @@ import {
     Logger,
     Post,
     UploadedFiles,
-    UseGuards,
     UseInterceptors,
   } from '@nestjs/common';
   import { ImageService } from './image.service';
