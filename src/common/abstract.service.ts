@@ -15,7 +15,7 @@ export abstract class AbstractService {
     } 
 
     async paginate(page: number = 1): Promise<PaginatedResult> {
-        const take = 12;
+        const take = 9;
 
         const [data, total] = await this.repository.findAndCount({
             take,
