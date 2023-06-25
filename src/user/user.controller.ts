@@ -12,7 +12,11 @@ export class UserController {
     private userService: UserService,
   ) {}
 
-
+  @Get()
+    async allData() {
+      return await this.userService.all();
+    } 
+    
     @Get()
     async all(
       @Query('page') page: number = 1

@@ -9,6 +9,11 @@ export class TestmonialController {
     constructor(private testmonialService: TestmonialService) {}
 
     @Get()
+    async allData() {
+      return await this.testmonialService.all();
+    }
+
+    @Get()
     async all(
       @Query('page') page: number = 1
     ) {

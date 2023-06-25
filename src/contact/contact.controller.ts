@@ -9,6 +9,11 @@ export class ContactController {
     constructor(private contactService: ContactService) {}
 
     @Get()
+    async allData() {
+      return await this.contactService.all();
+    }
+
+    @Get()
     async all(
       @Query('page') page: number = 1
     ) {

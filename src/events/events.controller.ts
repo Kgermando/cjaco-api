@@ -10,6 +10,11 @@ export class EventsController {
   constructor(private eventsService: EventsService) {}
 
   @Get()
+  async allData() {
+    return await this.eventsService.all();
+  }
+ 
+  @Get()
   async all(
     @Query('page') page: number = 1
   ) {

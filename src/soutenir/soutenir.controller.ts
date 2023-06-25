@@ -9,6 +9,11 @@ export class SoutenirController {
     constructor(private soutenirService: SoutenirService) {}
 
     @Get()
+    async allData() {
+      return await this.soutenirService.all();
+    }
+
+    @Get()
     async all() {
       return this.soutenirService.all();
     }

@@ -10,6 +10,12 @@ export class AnimateurController {
   constructor(private animateurService: AnimateurService) {}
 
   @Get()
+    async allData() {
+      return await this.animateurService.all();
+    }
+
+
+  @Get()
   async all(
     @Query('page') page: number = 1
   ) {

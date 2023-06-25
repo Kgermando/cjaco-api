@@ -9,6 +9,11 @@ export class PartnerController {
     constructor(private partnerService: PartnerService) {}
 
     @Get()
+    async allData() {
+      return await this.partnerService.all();
+    }
+
+    @Get()
     async all(
       @Query('page') page: number = 1
     ) {

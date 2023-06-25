@@ -9,6 +9,12 @@ export class ActivityController {
     constructor(private activityService: ActivityService) {}
 
     @Get()
+    async allData() {
+      return await this.activityService.all();
+    }
+
+
+    @Get()
     async all(
       @Query('page') page: number = 1
     ) {

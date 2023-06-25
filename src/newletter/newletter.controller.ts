@@ -9,6 +9,11 @@ export class NewletterController {
     constructor(private newletterService: NewletterService) {}
 
     @Get()
+    async allData() {
+      return await this.newletterService.all();
+    }
+
+    @Get()
     async all(
       @Query('page') page: number = 1
     ) {
