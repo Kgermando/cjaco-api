@@ -31,7 +31,6 @@ export abstract class AbstractService {
         }
     } 
 
-
     async create(data): Promise<any> {
         return this.repository.save(data);
     }
