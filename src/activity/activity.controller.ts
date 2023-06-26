@@ -8,7 +8,7 @@ import { ActivityUpdateDto } from './models/activity-update.dto';
 export class ActivityController {
     constructor(private activityService: ActivityService) {}
 
-    @Get()
+    @Get('all')
     async allData() {
       return await this.activityService.all();
     }

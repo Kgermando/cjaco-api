@@ -8,7 +8,7 @@ import { PartnerCreateDto } from './models/partner-create.dto';
 export class PartnerController {
     constructor(private partnerService: PartnerService) {}
 
-    @Get()
+    @Get('all')
     async allData() {
       return await this.partnerService.all();
     }

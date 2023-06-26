@@ -8,7 +8,7 @@ import { SoutenirUpdateDto } from './models/soutenir-update.dto';
 export class SoutenirController {
     constructor(private soutenirService: SoutenirService) {}
 
-    @Get()
+    @Get('all')
     async allData() {
       return await this.soutenirService.all();
     }

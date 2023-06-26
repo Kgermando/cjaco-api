@@ -9,7 +9,7 @@ export class AnimateurController {
 
   constructor(private animateurService: AnimateurService) {}
 
-  @Get()
+  @Get('all')
     async allData() {
       return await this.animateurService.all();
     }

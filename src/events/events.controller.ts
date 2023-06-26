@@ -9,7 +9,7 @@ export class EventsController {
 
   constructor(private eventsService: EventsService) {}
 
-  @Get()
+  @Get('all')
   async allData() {
     return await this.eventsService.all();
   }

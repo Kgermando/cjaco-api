@@ -8,7 +8,7 @@ import { ContactUpdateDto } from './models/contact-update';
 export class ContactController {
     constructor(private contactService: ContactService) {}
 
-    @Get()
+    @Get('all')
     async allData() {
       return await this.contactService.all();
     }

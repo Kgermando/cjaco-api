@@ -8,7 +8,7 @@ import { NewsLetterUpdateDto } from './models/newsletter-update.dto';
 export class NewletterController {
     constructor(private newletterService: NewletterService) {}
 
-    @Get()
+    @Get('all')
     async allData() {
       return await this.newletterService.all();
     }

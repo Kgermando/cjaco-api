@@ -12,7 +12,7 @@ export class UserController {
     private userService: UserService,
   ) {}
 
-  @Get()
+  @Get('all')
     async allData() {
       return await this.userService.all();
     } 

@@ -8,7 +8,7 @@ import { TestmonialUpdateDto } from './models/testmonial-update.dto';
 export class TestmonialController {
     constructor(private testmonialService: TestmonialService) {}
 
-    @Get()
+    @Get('all')
     async allData() {
       return await this.testmonialService.all();
     }
